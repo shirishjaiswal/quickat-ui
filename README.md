@@ -126,7 +126,7 @@ module.exports = {
 - **Library Maintainer**: Shirish
 - **Version**: 1.0.0
 - **License**: MIT
-- **GitHub Repository**: [GitHub Link](https://github.com/quickat/ui)
+- **GitHub Repository**: [GitHub Link](https://github.com/shirishjaiswal/quickat-ui)
 
 More components and props will be added soon to further enhance the customization options!
 

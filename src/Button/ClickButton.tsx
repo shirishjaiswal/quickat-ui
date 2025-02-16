@@ -154,8 +154,7 @@ export const ClickButton: React.FC<ClickButtonProps> = ({
     >
       <>
         {loading && <LoaderCircle className="mr-2 inline animate-spin" />}
-        {label && label}
-        {props.children && props.children}
+        {props.children ? props.children : label}
       </>
     </button>
   );
