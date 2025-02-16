@@ -27,7 +27,7 @@ export type FieldInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export const FieldInput: React.FC<FieldInputProps>  = ({
   type = 'text',
   label,
-  verified,
+  verified = 'none',
   editable,
   description,
   value,
