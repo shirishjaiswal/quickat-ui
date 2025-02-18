@@ -1,6 +1,6 @@
 {
   "name": "@quickat/ui",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Input Field Component",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -23,7 +23,12 @@
     "react",
     "component",
     "input",
-    "field"
+    "field",
+    "checkbox",
+    "button",
+    "modal",
+    "badge",
+    "dialog"
   ],
   "author": "shirish",
   "license": "ISC",
