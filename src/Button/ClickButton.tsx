@@ -42,77 +42,77 @@ type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 const variantClasses: Record<ButtonVariant, string> = {
   default:
-    'text-white bg-blue-700 hover:bg-blue-800  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ',
+    'text-white bg-blue-700 hover:bg-blue-800  ',
   alternative:
-    ' text-gray-900 focus:outline-none bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700',
-  dark: 'bg-gray-800 hover:bg-gray-900 focus:outline-none   dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700',
+    ' text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10',
+  dark: 'bg-gray-800 hover:bg-gray-900 ',
   light:
-    'text-black-900  bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600',
+    'text-black-900 bg-white border border-gray-300 hover:bg-gray-100',
   green:
-    'text-white focus:outline-none  bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 ',
-  red: 'text-white focus:outline-none bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 ',
+    'text-white  bg-green-700 hover:bg-green-800',
+  red: 'text-white bg-red-700 hover:bg-red-800',
   yellow:
-    'text-white focus:outline-none bg-yellow-400 hover:bg-yellow-500 ',
+    'text-white bg-yellow-400 hover:bg-yellow-500 ',
   purple:
-    'text-white focus:outline-none bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-700',
+    'text-white bg-purple-700 hover:bg-purple-800',
 
   'gradient-blue':
-    'text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br ',
   'gradient-green':
-    'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br ',
   'gradient-cyan':
-    'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br ',
   'gradient-teal':
-    'text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br ',
   'gradient-lime':
-    'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:outline-none',
+    'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br ',
   'gradient-red':
-    'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br ',
   'gradient-pink':
     'text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:outline-non',
   'gradient-purple':
-    'text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none',
+    'text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br ',
 
   'shadow-blue':
-    'text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 ',
+    'text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br shadow-lg shadow-blue-500/50',
   'shadow-green':
-    'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 ',
+    'text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br shadow-lg shadow-green-500/50 ',
   'shadow-cyan':
-    'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 ',
+    'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50',
   'shadow-teal':
-    'text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 ',
+    'text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br shadow-lg shadow-teal-500/50',
   'shadow-lime':
-    'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:outline-none  shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 ',
+    'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br shadow-lg shadow-lime-500/50',
   'shadow-red':
-    'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 ',
+    'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br shadow-lg shadow-red-500/50',
   'shadow-pink':
-    'text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 ',
+    'text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br shadow-lg shadow-pink-500/50',
   'shadow-purple':
-    'text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 ',
+    'text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br shadow-lg shadow-purple-500/50',
 
   'outline-blue':
-    'text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:outline-none dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 ',
+    'text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800',
   'outline-dark':
-    'text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:outline-none dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 ',
+    'text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900',
   'outline-green':
-    'text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:outline-none dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 ',
+    'text-green-700 hover:text-white border border-green-700 hover:bg-green-800 ',
   'outline-red':
-    'text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:outline-none dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 ',
+    'text-red-700 hover:text-white border border-red-700 hover:bg-red-800',
   'outline-yellow':
-    'text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:outline-none dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 ',
+    'text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500',
   'outline-purple':
-    'text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:outline-none dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 ',
+    'text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800',
 
   'purple-blue':
-    'text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none',
+    'text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl',
   'cyan-blue':
-    'text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:outline-none',
+    'text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl',
   'green-blue':
-    'text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:outline-none',
+    'text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl',
   'purple-pink':
-    'text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:outline-none',
+    'text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l',
   'pink-orange':
-    'text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:outline-none',
+    'text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -136,7 +136,7 @@ export interface ClickButtonProps extends React.ButtonHTMLAttributes<HTMLButtonE
 
 export const ClickButton: React.FC<ClickButtonProps> = ({
   label = 'Click',
-  variant,
+  variant = 'default',
   size = 'md',
   loading = false,
   disabled,
@@ -147,7 +147,7 @@ export const ClickButton: React.FC<ClickButtonProps> = ({
   return (
     <button
       type="button"
-      className={`${baseClasses} ${variantClasses[variant ?? 'default']} ${sizeClasses[size]} ${buttonStyle}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${buttonStyle}`}
       onClick={onClick}
       disabled={loading || disabled}
       {...props}

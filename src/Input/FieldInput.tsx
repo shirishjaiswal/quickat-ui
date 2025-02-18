@@ -34,12 +34,12 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
   onChange,
   onBlur,
   errorMessage,
-  mainContainerStyles_fi: mainContainerStyles_FI,
-  infoContainerStyles_fi: infoContainerStyles_FI,
-  labelStyles_fi: labelStyles_FI,
-  descriptionStyles_fi: descriptionStyles_FI,
-  inputStyles_fi: inputStyles_FI,
-  errorStyles_fi: errorStyles_FI,
+  mainContainerStyles_fi,
+  infoContainerStyles_fi,
+  labelStyles_fi,
+  descriptionStyles_fi,
+  inputStyles_fi,
+  errorStyles_fi,
   ...props
 }: FieldInputProps) =>{
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -90,19 +90,19 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
   };
 
   return (
-    <div id="ipf-container" className={mainContainerStyles_FI} >
-      <div id="info-container" className={infoContainerStyles_FI}>
+    <div id="ipf-container" className={mainContainerStyles_fi} >
+      <div id="info-container" className={infoContainerStyles_fi}>
         {label && (
           <label
             id="label"
-            className={`text-md font-medium text-stone-950 ${labelStyles_FI}`}
+            className={`text-md font-medium text-stone-950 ${labelStyles_fi}`}
           >
             {label} {props.required && <span className="text-rose-700">* </span>}
           </label>
         )}
         <p
           id="description"
-          className={`text-xs font-light text-zinc-800 ${descriptionStyles_FI}`}
+          className={`text-xs font-light text-zinc-800 ${descriptionStyles_fi}`}
         >
           {description}
         </p>
@@ -114,7 +114,7 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
             props.disabled || !isEditable
               ? 'cursor-not-allowed bg-gray-100 text-neutral-400'
               : 'bg-white'
-          } ${inputStyles_FI} ${type === 'password' && 'pr-10'} ${
+          } ${inputStyles_fi} ${type === 'password' && 'pr-10'} ${
             errorMessage
               ? 'border-rose-600 focus:border-rose-700 focus:bg-rose-300/10'
               : 'focus:border-zinc-300 focus:bg-slate-400/10'
@@ -186,7 +186,7 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
       {errorMessage && (
         <div
           id="error-message"
-          className={`text-xs font-light text-rose-700 ${errorStyles_FI}`}
+          className={`text-xs font-light text-rose-700 ${errorStyles_fi}`}
         >
           {errorMessage}
         </div>

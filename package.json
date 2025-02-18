@@ -1,6 +1,6 @@
 {
   "name": "@quickat/ui",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "Input Field Component",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/shirishjaiswal/quickat-ui"
   },
+  "homepage": "https://quickat.vercel.app",
   "files": [
     "dist",
     "dist/global.css"
