@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Square, SquareCheckBig } from 'lucide-react';
-import { BoxOptionType, VARIANT_CLASSES } from './select-box';
+import { BoxOptionType, VarientClass } from './select-box';
 import { BaseSelectBoxProps } from '../type';
 
 export interface MultiSelectBoxProps extends BaseSelectBoxProps {
@@ -96,11 +96,11 @@ export const MultiSelectBox: React.FC<MultiSelectBoxProps> = ({
           >
             {option.checked ? (
               <SquareCheckBig
-                className={`${VARIANT_CLASSES[variant]} ${boxStyle} rounded`}
+                className={`${VarientClass[variant]} ${boxStyle} rounded`}
               />
             ) : (
               <Square
-                className={`${VARIANT_CLASSES[variant]} ${boxStyle} rounded`}
+                className={`${VarientClass[variant]} ${boxStyle} rounded`}
               />
             )}
             <label>{option.label}</label>

@@ -12,7 +12,7 @@ type ButtonVariant =
 
 type ButtonSize = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-const VARIANT_STYLES: Record<ButtonVariant, string> = {
+const VariantClass: Record<ButtonVariant, string> = {
   none: '',
   default: 'text-white bg-blue-700 hover:bg-blue-800',
   alternative: 'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10',
@@ -59,7 +59,7 @@ const VARIANT_STYLES: Record<ButtonVariant, string> = {
   'pink-orange': 'text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl',
 };
 
-const SIZE_CLASSES: Record<ButtonSize, string> = {
+const SizeClass: Record<ButtonSize, string> = {
   none: '',
   xs: 'px-3 py-2 text-xs sm:px-4 sm:py-2.5 sm:text-sm md:px-5 md:py-2.5 md:text-sm',
   sm: 'px-3 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-5 md:py-2.5 md:text-base',
@@ -68,7 +68,7 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
   xl: 'px-6 py-3.5 text-lg sm:px-8 sm:py-4 sm:text-xl md:px-8 md:py-4 md:text-xl',
 };
 
-const BASE_CLASSES =
+const BaseClass =
   'font-medium text-center w-fit rounded-lg focus:outline-none transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed';
 
 export interface ClickButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -93,7 +93,7 @@ export const ClickButton: React.FC<ClickButtonProps> = ({
   return (
     <button
       type={type}
-      className={`${BASE_CLASSES} ${VARIANT_STYLES[variant]} ${SIZE_CLASSES[size]} ${className}`}
+      className={`${BaseClass} ${VariantClass[variant]} ${SizeClass[size]} ${className}`}
       onClick={onClick}
       disabled={loading || disabled}
       {...props}

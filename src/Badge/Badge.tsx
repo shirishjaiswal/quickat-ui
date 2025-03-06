@@ -4,7 +4,7 @@ export type BadgeVariant = 'none' | 'primary' | 'secondary';
 export type BadgeSize = 'none' | 'xs' | 'sm' | 'md';
 export type BadgeColor = 'none' | 'default' | 'dark' | 'green' | 'red' | 'yellow' | 'purple';
 
-const COLOR_CLASSES: Record<BadgeColor, string> = {
+const ColorClass: Record<BadgeColor, string> = {
   none: '',
   default: 'text-white bg-blue-700 border border-blue-700',
   dark: 'text-white bg-black border border-black',
@@ -14,7 +14,7 @@ const COLOR_CLASSES: Record<BadgeColor, string> = {
   purple: 'text-white bg-purple-700 border border-purple-700',
 };
 
-const SECONDARY_COLOR_CLASSES: Record<BadgeColor, string> = {
+const SecondaryColorClass: Record<BadgeColor, string> = {
   none: '',
   default: 'border border-blue-700 text-blue-700',
   dark: 'border border-black text-black',
@@ -24,7 +24,7 @@ const SECONDARY_COLOR_CLASSES: Record<BadgeColor, string> = {
   purple: 'border border-purple-700 text-purple-700',
 };
 
-const SIZE_CLASSES: Record<BadgeSize, string> = {
+const SizeClass: Record<BadgeSize, string> = {
   none: '',
   xs: 'text-xs px-2 py-0.5',
   sm: 'text-sm px-3 py-1',
@@ -52,14 +52,14 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const colorClass =
     variant === 'secondary'
-      ? SECONDARY_COLOR_CLASSES[color] || ''
+      ? SecondaryColorClass[color] || ''
       : variant === 'primary'
-      ? COLOR_CLASSES[color] || ''
+      ? ColorClass[color] || ''
       : '';
 
       console.log(colorClass);
   return (
-    <div className={`${BASE_CLASSES} ${colorClass} ${SIZE_CLASSES[size]} ${className}`} {...props}>
+    <div className={`${BASE_CLASSES} ${colorClass} ${SizeClass[size]} ${className}`} {...props}>
       {children || label}
     </div>
   );

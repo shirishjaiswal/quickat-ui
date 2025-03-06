@@ -9,7 +9,7 @@ export interface BoxOptionType {
   required?: boolean;
 }
 
-export const VARIANT_CLASSES: Record<BoxVariant, string> = {
+export const VarientClass: Record<BoxVariant, string> = {
   default: 'text-blue-700',
   'f-default': 'text-white bg-blue-700',
   green: 'text-green-700',
@@ -81,11 +81,11 @@ export const SelectBox: React.FC<SelectBoxProps> = ({
         >
           {cbOption.checked ? (
             <SquareCheckBig
-              className={`${VARIANT_CLASSES[variant]} ${boxStyle} rounded`}
+              className={`${VarientClass[variant]} ${boxStyle} rounded`}
             />
           ) : (
             <Square
-              className={`${VARIANT_CLASSES[variant]} ${boxStyle} rounded`}
+              className={`${VarientClass[variant]} ${boxStyle} rounded`}
             />
           )}
           <label>{cbOption.label}</label>
