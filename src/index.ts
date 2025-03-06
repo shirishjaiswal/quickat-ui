@@ -1,21 +1,23 @@
 import "./global.css";
 
-export { FieldInput } from './Input/FieldInput';
+export {FieldInput}  from './Input/FieldInput';
 export type { FieldInputProps } from './Input/FieldInput';
 
 export { ClickButton } from "./Button/ClickButton";
 export type { ClickButtonProps } from "./Button/ClickButton";
 
-export { MonoTixBox } from "./CheckBox/MonoTixBox";
-export type { MonoTixBoxProps } from "./CheckBox/MonoTixBox";
+export { SelectBox } from "./CheckBox/select-box";
+export type { SelectBoxProps, BoxOptionType as BOX_OPTION_TYPE } from "./CheckBox/select-box";
 
-export { TixBox } from "./CheckBox/TixBox";
-export type { BoxOptionType, BoxVariant, TixBoxProps } from "./CheckBox/TixBox";
+export { MultiSelectBox } from "./CheckBox/multi-select-box";
+export type { MultiSelectBoxProps  } from "./CheckBox/multi-select-box";
+
+export type { BoxVariant as BOX_VARIANT } from "./type";
 
 export { Badge } from "./Badge/Badge";
 export type { BadgeProps } from "./Badge/Badge";
 
 export { ModalBox } from "./DialogueBox/ModalBox";
-export type { ModalFieldsType as ModalFieldsType, ModalBoxProps} from "./DialogueBox/ModalBox";
+export type { ModalBoxProps, ModalBoxInputField } from "./DialogueBox/ModalBox";
 
 

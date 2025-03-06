@@ -8,23 +8,19 @@ import {
   PencilOff,
 } from 'lucide-react';
 import React, { useState } from 'react';
-export type Type = "text" | "password" | "email" | "date" | "month" | "tel" | "number" | "hidden";
-export type FieldInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  type?: Type;
-  label?: string;
-  description?: string;
-  verified?: boolean | "none";
-  editable?: boolean;
-  errorMessage?: string;
-  mainContainerStyles_fi?: string;
-  infoContainerStyles_fi?: string;
-  labelStyles_fi?: string;
-  descriptionStyles_fi?: string;
-  inputStyles_fi?: string;
-  errorStyles_fi?: string;
-};
+import { BaseFieldProps } from '../type';
 
-export const FieldInput: React.FC<FieldInputProps>  = ({
+export type Type = "text" | "password" | "email" | "date" | "month" | "tel" | "number" | "hidden";
+
+export type FieldInputProps = BaseFieldProps &
+  React.InputHTMLAttributes<HTMLInputElement> & {
+    type?: Type;
+    verified?: boolean | 'none';
+    editable?: boolean;
+    inputStyles?: string;
+  };
+
+export const FieldInput: React.FC<FieldInputProps> = ({
   type = 'text',
   label,
   verified = 'none',
@@ -34,14 +30,14 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
   onChange,
   onBlur,
   errorMessage,
-  mainContainerStyles_fi,
-  infoContainerStyles_fi,
-  labelStyles_fi,
-  descriptionStyles_fi,
-  inputStyles_fi,
-  errorStyles_fi,
+  mainContainerStyles,
+  infoContainerStyles,
+  labelStyles,
+  descriptionStyles,
+  inputStyles,
+  errorStyles,
   ...props
-}: FieldInputProps) =>{
+}: FieldInputProps) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [isEditable, setIsEditable] = useState(true);
   const [inputValue, setInputValue] = useState(value || '');
@@ -65,15 +61,15 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
     if (props.required && value.trim() === '') {
       error = 'Field is required';
     } else if (props.min && value.length < +props.min) {
-       error =  `Minimum ${props.min} characters are required`;
+      error = `Minimum ${props.min} characters are required`;
     } else if (props.max && value.length > +props.max) {
-       error =  `Maximum ${props.max} characters are required`;
-    } else if(props.pattern && !props.pattern.match(value)) {
-       error =  "Invalid format";
-    }else if (type === 'email') {
+      error = `Maximum ${props.max} characters are required`;
+    } else if (props.pattern && !props.pattern.match(value)) {
+      error = "Invalid format";
+    } else if (type === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(value)) {
-         error =  'Invalid email address';
+        error = 'Invalid email address';
       }
     }
     return error;
@@ -85,24 +81,24 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
   };
 
   const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if(editable) setIsEditable(false);
+    if (editable) setIsEditable(false);
     onBlur?.(e);
   };
 
   return (
-    <div id="ipf-container" className={mainContainerStyles_fi} >
-      <div id="info-container" className={infoContainerStyles_fi}>
+    <div id="ipf-container" className={mainContainerStyles} >
+      <div id="info-container" className={infoContainerStyles}>
         {label && (
           <label
             id="label"
-            className={`text-md font-medium text-stone-950 ${labelStyles_fi}`}
+            className={`text-md font-medium text-stone-950 ${labelStyles}`}
           >
             {label} {props.required && <span className="text-rose-700">* </span>}
           </label>
         )}
         <p
           id="description"
-          className={`text-xs font-light text-zinc-800 ${descriptionStyles_fi}`}
+          className={`text-xs font-light text-zinc-800 ${descriptionStyles}`}
         >
           {description}
         </p>
@@ -110,15 +106,13 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
 
       <div id="input-container" className="relative flex items-center">
         <input
-          className={`text-md min-h-9 w-full rounded-sm border p-1 text-neutral-950 placeholder-zinc-500 placeholder:text-sm focus:border focus:outline-none ${
-            props.disabled || !isEditable
-              ? 'cursor-not-allowed bg-gray-100 text-neutral-400'
-              : 'bg-white'
-          } ${inputStyles_fi} ${type === 'password' && 'pr-10'} ${
-            errorMessage
+          className={`text-md min-h-9 w-full rounded-sm border p-1 text-neutral-950 placeholder-zinc-500 placeholder:text-sm focus:border focus:outline-none ${props.disabled || !isEditable
+            ? 'cursor-not-allowed bg-gray-100 text-neutral-400'
+            : 'bg-white'
+            } ${inputStyles} ${type === 'password' && 'pr-10'} ${errorMessage
               ? 'border-rose-600 focus:border-rose-700 focus:bg-rose-300/10'
               : 'focus:border-zinc-300 focus:bg-slate-400/10'
-          }`}
+            }`}
           type={type === 'password' && isPasswordVisible ? 'text' : type}
           placeholder={props.placeholder}
           value={inputValue}
@@ -177,7 +171,7 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
                 <CircleAlert
                   id="unverified"
                   size={18}
-                  className="transform text-red-500"
+                  className="transform text-rose-500"
                 />
               ))}
           </div>
@@ -186,7 +180,7 @@ export const FieldInput: React.FC<FieldInputProps>  = ({
       {errorMessage && (
         <div
           id="error-message"
-          className={`text-xs font-light text-rose-700 ${errorStyles_fi}`}
+          className={`text-xs font-light text-rose-700 ${errorStyles}`}
         >
           {errorMessage}
         </div>

@@ -1,56 +1,66 @@
 import React from 'react';
 
-export type BadgeProps = {
-  label: string;
-  varient?: 'primary' | 'secondary';
-  size?: 'xs' | 'sm' | 'md';
-  color?: 'blue' | 'gray' | 'green' | 'red' | 'yellow' | 'purple' | 'white' | 'black' | 'none';
-  badgeStyle?: string;
-  children?: React.ReactNode;
-};
+export type BadgeVariant = 'none' | 'primary' | 'secondary';
+export type BadgeSize = 'none' | 'xs' | 'sm' | 'md';
+export type BadgeColor = 'none' | 'default' | 'dark' | 'green' | 'red' | 'yellow' | 'purple';
 
-const colorClasses = {
-  blue: 'text-blue-700 border-blue-700 bg-blue-700',
-  gray: 'text-gray-900 border-gray-900 bg-gray-900',
-  green: 'text-green-700 border-green-700 bg-green-700',
-  red: 'text-red-700 border-red-700 bg-red-700',
-  yellow: 'text-amber-400 border-amber-400 bg-amber-400',
-  purple: 'text-purple-700 border-purple-700 bg-purple-700',
-  white: 'text-slate-50 border-slate-50 bg-slate-50',
-  black: 'text-slate-900 border-slate-900 bg-slate-900',
+const COLOR_CLASSES: Record<BadgeColor, string> = {
   none: '',
+  default: 'text-white bg-blue-700 border border-blue-700',
+  dark: 'text-white bg-black border border-black',
+  green: 'text-white bg-green-700 border border-green-700',
+  red: 'text-white bg-red-700 border border-red-700',
+  yellow: 'text-black bg-amber-400 border border-amber-400',
+  purple: 'text-white bg-purple-700 border border-purple-700',
 };
 
-const sizeClasses = {
-  xs: 'text-xs py-0.5 px-1.5 xs:text-sm xs:py-1 xs:px-2',
-  sm: 'text-sm py-1 px-2.5 sm:text-md sm:py-1.5 sm:px-3',
-  md: 'text-md py-1.5 px-3.5 md:text-lg md:py-2 md:px-4',
+const SECONDARY_COLOR_CLASSES: Record<BadgeColor, string> = {
+  none: '',
+  default: 'border border-blue-700 text-blue-700',
+  dark: 'border border-black text-black',
+  green: 'border border-green-700 text-green-700',
+  red: 'border border-red-700 text-red-700',
+  yellow: 'border border-amber-400 text-amber-400',
+  purple: 'border border-purple-700 text-purple-700',
 };
 
-const baseClasses = 'font-semibold rounded-full';
+const SIZE_CLASSES: Record<BadgeSize, string> = {
+  none: '',
+  xs: 'text-xs px-2 py-0.5',
+  sm: 'text-sm px-3 py-1',
+  md: 'text-md px-4 py-1.5',
+};
+
+const BASE_CLASSES = 'font-semibold w-fit rounded-full items-center';
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  label?: string;
+  variant?: BadgeVariant;
+  size?: BadgeSize;
+  color?: BadgeColor;
+  className?: string;
+}
 
 export const Badge: React.FC<BadgeProps> = ({
-  label,
-  varient = 'primary',
-  color = 'blue',
+  label = 'Badge',
+  variant = 'secondary',
   size = 'sm',
-  badgeStyle,
+  color = 'green',
+  className = '',
   children,
+  ...props
 }) => {
-  const isSecondary = varient === 'secondary';
+  const colorClass =
+    variant === 'secondary'
+      ? SECONDARY_COLOR_CLASSES[color] || ''
+      : variant === 'primary'
+      ? COLOR_CLASSES[color] || ''
+      : '';
 
-  const colorClass = isSecondary
-    ? `${colorClasses[color].replace(/bg-\S+/g, '')} border`
-    : `${colorClasses[color].replace(/text-\S+/g, 'text-white')}`;
-
-  const sizeClass = sizeClasses[size];
-
+      console.log(colorClass);
   return (
-    <div
-      className={`inline ${baseClasses} ${colorClass} ${sizeClass} ${badgeStyle}`}
-    >
-      {children}
-      {label}
+    <div className={`${BASE_CLASSES} ${colorClass} ${SIZE_CLASSES[size]} ${className}`} {...props}>
+      {children || label}
     </div>
   );
 };
