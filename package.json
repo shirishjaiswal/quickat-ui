@@ -1,12 +1,71 @@
 {
   "name": "@quickat/ui",
   "version": "0.2.5",
-  "description": "Input Field Component",
+  "description": "A modular React UI component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "style": "./dist/global.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./field-input": {
+      "types": "./dist/field-input.d.ts",
+      "import": "./dist/field-input.mjs",
+      "require": "./dist/field-input.js"
+    },
+    "./duration": {
+      "types": "./dist/duration.d.ts",
+      "import": "./dist/duration.mjs",
+      "require": "./dist/duration.js"
+    },
+    "./click-button": {
+      "types": "./dist/click-button.d.ts",
+      "import": "./dist/click-button.mjs",
+      "require": "./dist/click-button.js"
+    },
+    "./select-box": {
+      "types": "./dist/select-box.d.ts",
+      "import": "./dist/select-box.mjs",
+      "require": "./dist/select-box.js"
+    },
+    "./multi-select-box": {
+      "types": "./dist/multi-select-box.d.ts",
+      "import": "./dist/multi-select-box.mjs",
+      "require": "./dist/multi-select-box.js"
+    },
+    "./checkbox-types": {
+      "types": "./dist/checkbox-types.d.ts",
+      "import": "./dist/checkbox-types.mjs",
+      "require": "./dist/checkbox-types.js"
+    },
+    "./badge": {
+      "types": "./dist/badge.d.ts",
+      "import": "./dist/badge.mjs",
+      "require": "./dist/badge.js"
+    },
+    "./modal-box": {
+      "types": "./dist/modal-box.d.ts",
+      "import": "./dist/modal-box.mjs",
+      "require": "./dist/modal-box.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
+    },
+    "./global.css": "./dist/global.css"
+  },
+  "files": [
+    "dist",
+    "dist/global.css"
+  ],
   "scripts": {
-    "build": "tsup --dts --format esm,cjs && cp src/global.css dist/global.css",
+    "build:css": "npm tailwindcss -i ./src/styles.css -o ./dist/quickat.css --minify",
+    "build": "npm run build:css && tsup --dts --format esm,cjs",
     "lint": "tsc",
     "prepare": "npm install tailwindcss@>=3.0.0 lodash@>=4.17.21 lucide-react@>=0.475.0 typescript@>=5.0.0"
   },
@@ -14,12 +73,10 @@
     "type": "git",
     "url": "git+https://github.com/shirishjaiswal/quickat-ui"
   },
-  "homepage": "https://quickat.vercel.app",
-  "files": [
-    "dist",
-    "dist/global.css"
+  "sideEffects": [
+    "**/*.css"
   ],
-  "style": "dist/global.css",
+  "homepage": "https://quickat.vercel.app",
   "keywords": [
     "react",
     "component",
@@ -38,11 +95,13 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.21",
-    "lucide-react": "^0.477.0",
+    "lucide-react": "^0.479.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
     "tailwindcss": ">=3.0.0",
-    "typescript": ">=5.0.0"
+    "typescript": ">=5.0.0",
+    "murmurhash": "^2.0.1",
+    "react-select": "^5.10.1"
   },
   "peerDependenciesMeta": {
     "tailwindcss": {
@@ -65,8 +124,12 @@
     "@types/react-dom": ">=18.0.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.11",
+    "tailwindcss": "^4.0.12",
     "tsup": ">=8.0.0",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "murmurhash": "^2.0.1",
+    "react-select": "^5.10.1"
   }
 }

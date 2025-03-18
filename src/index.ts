@@ -1,23 +1,21 @@
-import "./global.css";
+import "./styles.css";
 
-export {FieldInput}  from './Input/FieldInput';
-export type { FieldInputProps } from './Input/FieldInput';
+export {FieldInput}  from './input/field-input';
+export type { FieldInputProps, FieldInputType } from './input/field-input';
 
-export { ClickButton } from "./Button/ClickButton";
-export type { ClickButtonProps } from "./Button/ClickButton";
+export { ClickButton } from "./button/click-button";
+export type { ClickButtonProps, } from "./button/click-button";
 
-export { SelectBox } from "./CheckBox/select-box";
-export type { SelectBoxProps, BoxOptionType as BOX_OPTION_TYPE } from "./CheckBox/select-box";
+export { SelectBox } from "./checkBox/select-box";
+export type { SelectBoxProps, SelectBoxOnChangeEvent } from "./checkBox/select-box";
 
-export { MultiSelectBox } from "./CheckBox/multi-select-box";
-export type { MultiSelectBoxProps  } from "./CheckBox/multi-select-box";
+export { MultiSelectBox } from "./checkBox/multi-select-box";
+export type { MultiSelectBoxProps, MultiSelectBoxOnChangeEvent } from "./checkBox/multi-select-box";
 
-export type { BoxVariant as BOX_VARIANT } from "./type";
+export type { BoxOptionType } from "./checkBox/types";
 
-export { Badge } from "./Badge/Badge";
-export type { BadgeProps } from "./Badge/Badge";
+export { Badge } from "./badge/badge";
+export type { BadgeProps } from "./badge/badge";
 
-export { ModalBox } from "./DialogueBox/ModalBox";
-export type { ModalBoxProps, ModalBoxInputField } from "./DialogueBox/ModalBox";
-
-
+export { ModalBox } from "./dialogueBox/modal-box";
+export type { ModalBoxProps, ModalBoxInputField } from "./dialogueBox/modal-box";

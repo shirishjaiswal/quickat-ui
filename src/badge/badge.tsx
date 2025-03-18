@@ -31,7 +31,7 @@ const SizeClass: Record<BadgeSize, string> = {
   md: 'text-md px-4 py-1.5',
 };
 
-const BASE_CLASSES = 'font-semibold w-fit rounded-full items-center';
+const BaseClass = 'font-semibold w-fit rounded-full items-center';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -59,8 +59,9 @@ export const Badge: React.FC<BadgeProps> = ({
 
       console.log(colorClass);
   return (
-    <div className={`${BASE_CLASSES} ${colorClass} ${SizeClass[size]} ${className}`} {...props}>
+    <div className={`${BaseClass} ${colorClass} ${SizeClass[size]} ${className}`} {...props}>
       {children || label}
     </div>
   );
 };
+

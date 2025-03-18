@@ -1,9 +1,10 @@
 import React from 'react';
-
 import { X } from 'lucide-react';
-import { FieldInput, FieldInputProps } from '../Input/FieldInput';
-import { BoxOptionType, SelectBox, SelectBoxProps } from '../CheckBox/select-box';
-import { ClickButton, ClickButtonProps } from '../Button/ClickButton';
+import { FieldInputProps } from '../input/field-input';
+import { SelectBox, SelectBoxProps } from '../checkBox/select-box';
+import { ClickButtonProps } from '../button/click-button';
+import { BoxOptionType, ClickButton, FieldInput } from '..';
+
 
 export type ModalBoxInputField =
   | (FieldInputProps & { type: "text" })
@@ -56,7 +57,7 @@ export const ModalBox: React.FC<ModalBoxProps> = ({
           variant='none'
           size='none'
           onClick={onClose}
-          className={`absolute right-3 top-3 w-full text-gray-500 hover:text-red-700 focus:outline-none ${closeButtonStyle_mb}`}
+          className={`absolute right-3 top-3 text-gray-500 hover:text-red-700 focus:outline-none ${closeButtonStyle_mb}`}
         >
           <X />
         </ClickButton>

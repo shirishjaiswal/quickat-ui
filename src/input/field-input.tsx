@@ -7,14 +7,15 @@ import {
   Pencil,
   PencilOff,
 } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BaseFieldProps } from '../type';
+import { ClickButton } from '../button/click-button';
 
-export type Type = "text" | "password" | "email" | "date" | "month" | "tel" | "number" | "hidden";
+export type FieldInputType = "text" | "password" | "email" | "date" | "month" | "tel" | "number" | "hidden";
 
 export type FieldInputProps = BaseFieldProps &
   React.InputHTMLAttributes<HTMLInputElement> & {
-    type?: Type;
+    type?: FieldInputType;
     verified?: boolean | 'none';
     editable?: boolean;
     inputStyles?: string;
@@ -23,9 +24,11 @@ export type FieldInputProps = BaseFieldProps &
 export const FieldInput: React.FC<FieldInputProps> = ({
   type = 'text',
   label,
+  description,
+  required,
+  disabled,
   verified = 'none',
   editable,
-  description,
   value,
   onChange,
   onBlur,
@@ -38,9 +41,13 @@ export const FieldInput: React.FC<FieldInputProps> = ({
   errorStyles,
   ...props
 }: FieldInputProps) => {
-  const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [isEditable, setIsEditable] = useState(true);
-  const [inputValue, setInputValue] = useState(value || '');
+  const [isPasswordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [isEditable, setIsEditable] = useState<boolean>(true);
+  const [inputValue, setInputValue] = useState<string | number | readonly string[]>(value || '');
+
+  useEffect(() => {
+    setInputValue(value || '');
+  }, [value]);
 
   const debouncedOnChange = debounce(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +65,7 @@ export const FieldInput: React.FC<FieldInputProps> = ({
   );
   const getError = (value: string) => {
     let error = "";
-    if (props.required && value.trim() === '') {
+    if (required && value.trim() === '') {
       error = 'Field is required';
     } else if (props.min && value.length < +props.min) {
       error = `Minimum ${props.min} characters are required`;
@@ -91,22 +98,22 @@ export const FieldInput: React.FC<FieldInputProps> = ({
         {label && (
           <label
             id="label"
-            className={`text-md font-medium text-stone-950 ${labelStyles}`}
-          >
-            {label} {props.required && <span className="text-rose-700">* </span>}
+            className={`${labelStyles ?? 'text-md font-medium text-stone-950'} ${required ? 'after:content-["*"] after:text-rose-700 after:ml-1' : ''}`}
+            >
+            {label}
           </label>
         )}
         <p
           id="description"
-          className={`text-xs font-light text-zinc-800 ${descriptionStyles}`}
-        >
+          className={`${descriptionStyles ?? 'text-zinc-800 text-xs font-light'}`}
+          >
           {description}
         </p>
       </div>
 
       <div id="input-container" className="relative flex items-center">
         <input
-          className={`text-md min-h-9 w-full rounded-sm border p-1 text-neutral-950 placeholder-zinc-500 placeholder:text-sm focus:border focus:outline-none ${props.disabled || !isEditable
+          className={`text-md min-h-9 w-full rounded-sm border p-1 text-neutral-950 placeholder-zinc-500 placeholder:text-sm focus:border focus:outline-none ${disabled || !isEditable
             ? 'cursor-not-allowed bg-gray-100 text-neutral-400'
             : 'bg-white'
             } ${inputStyles} ${type === 'password' && 'pr-10'} ${errorMessage
@@ -116,7 +123,7 @@ export const FieldInput: React.FC<FieldInputProps> = ({
           type={type === 'password' && isPasswordVisible ? 'text' : type}
           placeholder={props.placeholder}
           value={inputValue}
-          disabled={props.disabled || !isEditable}
+          disabled={disabled || !isEditable}
           onChange={handleChange}
           onBlur={handleOnBlur}
           {...props}
@@ -124,7 +131,7 @@ export const FieldInput: React.FC<FieldInputProps> = ({
         {type !== 'hidden' && (
           <div className="absolute right-2 top-1/2 flex -translate-y-1/2 gap-1">
             {type === 'password' && (
-              <button
+              <ClickButton
                 id="show-password-button"
                 className="transform text-gray-400"
                 type="button"
@@ -138,14 +145,14 @@ export const FieldInput: React.FC<FieldInputProps> = ({
                 ) : (
                   <EyeOff className="h-5 w-5" />
                 )}
-              </button>
+              </ClickButton>
             )}
 
             {type !== 'password' &&
               type !== 'month' &&
               type !== 'date' &&
               editable && (
-                <button
+                <ClickButton
                   id="edit-toggle"
                   className="transform text-gray-500"
                   type="button"
@@ -157,7 +164,7 @@ export const FieldInput: React.FC<FieldInputProps> = ({
                   ) : (
                     <Pencil className="h-5 w-5" />
                   )}
-                </button>
+                </ClickButton>
               )}
             {verified !== 'none' &&
               (type === 'text' || type === 'email' || type === 'tel') &&
@@ -180,7 +187,7 @@ export const FieldInput: React.FC<FieldInputProps> = ({
       {errorMessage && (
         <div
           id="error-message"
-          className={`text-xs font-light text-rose-700 ${errorStyles}`}
+          className={`text-rose-700 ${errorStyles ?? 'text-sm font-medium'}`}
         >
           {errorMessage}
         </div>

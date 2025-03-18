@@ -15,5 +15,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  content: ["./*.tsx"]
+  content: ["./src/**/*.{ts,tsx}"]
 }
